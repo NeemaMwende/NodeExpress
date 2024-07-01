@@ -43,8 +43,37 @@
 //     console.log(`Server running at http://localhost:${port}`);
 // });
 
+
+//GET REQUEST
+// const express = require("express");
+// const app = express();
+
+// // Import routes
+// const routes = require("./routes/routes");
+
+// // Middleware to use the routes
+// app.use("/routes", routes);
+
+// app.get("/", (req, res) => {
+//     res.send("Server is up");
+// });
+
+// app.listen(3000, () => {
+//     console.log("Connected to the server");
+// });
+
+//POST REQUEST
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+
+// Middleware to parse JSON bodies
+app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded({
+        extended: true,
+    })
+);
 
 // Import routes
 const routes = require("./routes/routes");
@@ -53,7 +82,7 @@ const routes = require("./routes/routes");
 app.use("/routes", routes);
 
 app.get("/", (req, res) => {
-    res.send("Server is up");
+    res.send("Server is up and running");
 });
 
 app.listen(3000, () => {
