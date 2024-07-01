@@ -6,15 +6,15 @@
 // })
 // .listen(3000);
 
-const express = require("express");
-const app = express();
+// const express = require("express");
+// const app = express();
 
-app.get("/", (req,res)=>{
-    res.send("Server is up and running");
-});
-app.listen(3000, ()=> {
-    console.log("Server is okay");
-});
+// app.get("/", (req,res)=>{
+//     res.send("Server is up and running");
+// });
+// app.listen(3000, ()=> {
+//     console.log("Server is okay");
+// });
 
 
 // const http = require("http");
@@ -42,4 +42,21 @@ app.listen(3000, ()=> {
 // app.listen(port, () => {
 //     console.log(`Server running at http://localhost:${port}`);
 // });
+
+const express = require("express");
+const app = express();
+
+// Import routes
+const routes = require("./routes/routes");
+
+// Middleware to use the routes
+app.use("/routes", routes);
+
+app.get("/", (req, res) => {
+    res.send("Server is up");
+});
+
+app.listen(3000, () => {
+    console.log("Connected to the server");
+});
 
