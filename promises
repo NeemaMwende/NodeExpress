@@ -1,0 +1,68 @@
+
+// let fruits = ["Mango", "Banana", "Apple"];
+// const getFruits = () => {
+//     setTimeout(() => {
+//         fruits.forEach(data => {
+//             console.log(data);
+//         })
+//     },1000);
+// }   
+
+// const postFruits = (fruit) => {
+//     return new Promise ((resolve, reject) => {
+//         setTimeout(() => {
+//             fruits.push(fruit);
+//             let err = false;
+//             if (!err) {
+//                 resolve();
+//             }else{
+//                 reject("Something went wrong");
+//             }
+//         },2000);
+//     });
+// }
+// postFruits("Kiwi")
+//     .then(getFruits)
+//     .catch(err => {
+//         console.log(err);
+// })
+
+let myPromise = new Promise((resolve ,reject) => {
+    let condition = false;
+
+    if (condition) {
+        resolve("The promise has been executed");
+    }else {
+        reject("The promise has been rejected");
+    }
+});
+
+myPromise
+    .then((message) => {
+        console.log(message);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+function checkFruitAvailability(fruit) {
+    return new Promise((resolve, reject) => {
+        const fruitsAvailable = ["apple", "mango", "cherry", "banana"]
+
+        setTimeout(() => {
+            if(fruitsAvailable.includes(fruit)){
+                resolve(`${fruit} is available`);
+            }else{
+                reject(`${fruit} is not available`);
+            }
+        },1000);
+    });
+}
+
+checkFruitAvailability("car")
+    .then((message)=>{
+        console.log(message);
+    })
+    .catch((error)=> {
+        console.log(error)
+    });
